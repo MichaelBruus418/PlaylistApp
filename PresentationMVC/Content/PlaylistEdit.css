@@ -1,0 +1,13 @@
+﻿
+
+.defaultTable th {
+    background-color: #ff6a00;
+}
+
+.defaultTable .length {
+    width: 1px;
+}
+
+.defaultTable .select {
+    width: 1px;
+}

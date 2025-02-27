@@ -1,0 +1,37 @@
+﻿@using DTO.Model;
+
+@model DTO.Model.Playlist
+
+@{
+    ViewBag.Title = "Add Playlist";
+}
+
+@section HeadCss
+{
+    <link href="~/Content/PLaylistAdd.css" rel="stylesheet" type="text/css" />
+    @*<style></style>*@
+}
+
+@section HeadScripts
+{
+    @*<script></script>*@
+}
+
+
+@using (Html.BeginForm("Add", "Playlist", FormMethod.Post))
+{
+    <div class="outer">
+        <h1>@ViewBag.Title</h1>
+        <div class="row">
+            <div class="name">
+                @Html.LabelFor(m => m.Name)<br />
+                @Html.EditorFor(m => m.Name)
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row buttons">
+            <input type="submit" value="OK" />
+            <input type="button" value="Cancel" onclick="window.location='@Url.Action("Index")'" />
+        </div>
+    </div>
+}

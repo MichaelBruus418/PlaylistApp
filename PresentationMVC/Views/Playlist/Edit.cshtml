@@ -1,0 +1,60 @@
+﻿
+@using DTO.Model;
+
+@model  PresentationMVC.ViewModels.PlaylistEditViewModel
+
+@{
+    ViewBag.Title = Model.Playlist.Name;
+}
+
+@section HeadCss
+{
+    <link href="~/Content/Table.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PlaylistEdit.css" rel="stylesheet" type="text/css" />
+}
+
+@section HeadScripts
+{
+    @*<script></script>*@
+}
+
+
+<h1>Contents of playlist: @ViewBag.Title</h1>
+
+<p>
+    Add/remove track from playlist by check/unchecking and clicking Update.
+</p>
+
+
+@{ Html.BeginForm("Edit", "Playlist", FormMethod.Post); }
+@* Necessary for passing Playlist Id back to Controller *@
+@Html.HiddenFor(m => m.Playlist.Id)
+<table class="defaultTable">
+    <thead>
+        <tr>
+            <th>Track Title</th>
+            <th>Length</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.TrackPool.Count(); i++)
+        {
+            <tr>
+                <td class="title">@Model.TrackPool[i].Title</td>
+                <td class="length">@Html.Partial("_TrackLength", @Model.TrackPool[i])</td>
+                <td class="select">
+                    @Html.CheckBoxFor(m => m.TrackPool[i].IsSelected)
+                    @* Necessary for passing track id back to controller *@
+                    @Html.HiddenFor(m => m.TrackPool[i].Id)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <input type="submit" value="Update" />
+    <input type="button" value="Cancel" onclick="window.location='@Url.Action("Index", "Playlist")'" />
+</div>
+@{ Html.EndForm(); }

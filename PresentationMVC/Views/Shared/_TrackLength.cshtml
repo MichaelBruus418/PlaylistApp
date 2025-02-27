@@ -1,0 +1,32 @@
+﻿@*
+    This partial view expects a Track object as model,
+    and outputs Length attribute of Track, formatted to our liking.
+*@
+
+
+@using DTO.Model;
+
+@model Track
+
+@if (Model.Length.HasValue)
+{
+    TimeSpan ts = (TimeSpan) Model.Length;
+    
+    // We always display minutes and seconds. 
+    // We Only display Hours if it is above zero.
+    if (ts.Hours > 0)
+    {
+        @Html.Raw(ts.ToString(@"h\:mm\:ss"));
+    }
+    else
+    {
+        @Html.Raw(ts.ToString(@"mm\:ss"));
+
+    }
+}
+
+
+
+
+
+

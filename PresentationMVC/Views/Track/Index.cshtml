@@ -1,0 +1,58 @@
+﻿
+@using DTO.Model;
+
+@model  List<Track>
+
+@{
+    @*Layout = null;*@
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.Title = "Track Pool";
+}
+
+@section HeadCss
+{
+    <link href="~/Content/Table.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/TrackIndex.css" rel="stylesheet" type="text/css" />
+}
+
+@section HeadScripts
+{
+
+}
+
+<h1>@ViewBag.Title</h1>
+
+@{ Html.BeginForm("Delete", "Track", FormMethod.Post); }
+<table class="defaultTable">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Length</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <tr>
+                <td class="title">@Model[i].Title</td>
+                @*<td class="length">@Html.Partial("_TrackLength", @Model[i])</td>*@
+                @* Below we use a childAction to format output of Length attribute. *@
+                <td class="length">@Html.Action("TrackLengthChildAction", @Model[i])</td>
+                <td class="select">
+                    @* Jeg bruger ikke HtmlHelpers til checkbox, da det gør det vanskeligere håndtere form i controlleren. *@
+                    <input type="checkbox" id="@Model[i].Id" name="@Model[i].Id" value="true">
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <input type="button" value="Back to Playlists" onclick="window.location='@Url.Action("Index", "Playlist")'" />
+    <input type="button" value="Add Track" onclick="window.location='@Url.Action("Add")'" />
+    <input type="submit" value="Delete Selected Tracks" />
+</div>
+@{ Html.EndForm(); }
+
+

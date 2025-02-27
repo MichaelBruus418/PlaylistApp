@@ -1,0 +1,40 @@
+﻿
+@using DTO.Model;
+
+@model  Playlist
+
+@{
+    ViewBag.Title = "Playlist: " + Model.Name;
+}
+
+@section HeadCss
+{
+    <link href="~/Content/Table.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PlaylistDisplay.css" rel="stylesheet" type="text/css" />
+}
+
+<h1>@ViewBag.Title</h1>
+
+<table class="defaultTable">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Length</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Track t in Model.Tracks)
+        {
+            <tr>
+                <td class="title">@t.Title</td>
+                <td class="length">@Html.Partial("_TrackLength", t)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <input type="button" value="Back to Playlists" onclick="window.location='@Url.Action("Index")'" />
+</div>
+
+
+

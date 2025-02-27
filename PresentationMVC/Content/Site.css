@@ -1,0 +1,117 @@
+﻿/**
+Note: 100% is always related to viewport/parent.
+*/
+html, body {
+    height: 100%;
+}
+
+/**
+Set global font & size.
+Set background color. 
+Background graphics is set at end of this CSS file.
+Background graphics will then be loaded after all other settings has been set. 
+*/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    /* As body font-size is defined in pixels, use em everywhere else. Em font-size is relative to parent element font-size. */
+    font-size: 14px;
+    color: #000000;
+    padding: 20px;
+}
+
+.text-danger {
+    color: red;
+}
+
+
+input[type=text] {
+    width: 100%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+button, input[type=button], input[type=submit] {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+}
+
+button:hover, input[type=button]:hover, input[type=submit]:hover {
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+button:disabled, input[type=button]:disabled, input[type=submit]:disabled {
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
+}
+
+button:active, input[type=button]:active, input[type=submit]:active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+}
+
+button:focus, input[type=button]:focus, input[type=submit]:focus {
+    outline: 1px transparent;
+}
+
+button:before, input[type=button]:before, input[type=submit]:before {
+    display: none;
+}
+
+/**
+Prevent link from changing color due to browser defaults.
+active = on click/enter event / link = unvisted link / visited = visted link
+*/
+a.actionLink:active, a.actionLink:link, a.actionLink:visited {
+    color: #0000dd;
+}
+
+/**
+Define class for anchors that have no text-decoration, except on hover.
+*/
+a.actionLink {
+    text-decoration: none;
+}
+
+/**
+Define text-decoration on hover.
+*/
+a.actionLink:hover {
+    text-decoration: underline;
+}   
+
+h1 {
+    margin-bottom: 10px;
+}
+
+

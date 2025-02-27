@@ -1,0 +1,43 @@
+﻿@using DTO.Model;
+
+@model DTO.Model.Track
+
+
+@{
+    ViewBag.Title = "Add Track";
+}
+
+@section HeadCss
+{
+    <link href="~/Content/TrackAdd.css" rel="stylesheet" type="text/css" />
+    @*<style></style>*@
+}
+
+@section HeadScripts
+{
+    @*<script></script>*@
+}
+
+
+@using (Html.BeginForm("Add", "Track", FormMethod.Post))
+{
+    <div class="outer">
+        <h1>Add Track</h1>
+        <div class="row">
+            <div class="title">
+                @Html.LabelFor(m => m.Title)<br />
+                @Html.EditorFor(m => m.Title)
+                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            </div>
+            <div class="length">
+                @Html.LabelFor(m => m.Length)<br />
+                @Html.TextBoxFor(m => m.Length, new { @placeholder = "hh:mm:ss" })
+                @Html.ValidationMessageFor(m => m.Length, "", new { @class = "text-danger"})
+            </div>
+        </div>
+        <div class="row buttons">
+            <input type="submit" value="OK" />
+            <input type="button" value="Cancel" onclick="window.location='@Url.Action("Index")'" />
+        </div>
+    </div>
+}

@@ -1,0 +1,68 @@
+﻿
+@using DTO.Model;
+
+@model  List<Playlist>
+
+@{
+    ViewBag.Title = "Playlists";
+}
+
+@section HeadCss
+{
+    <link href="~/Content/Table.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PlaylistIndex.css" rel="stylesheet" type="text/css" />
+}
+
+@section HeadScripts
+{
+    <script>
+        function deleteById(id) {
+            if (typeof (id) !== "number") return;
+
+            let form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", "@Url.Action("Delete", "Playlist")");
+            let input = document.createElement("input");
+            input.setAttribute("type", "hidden");
+            input.setAttribute("name", "id");
+            input.setAttribute("value", id);
+            form.appendChild(input);
+            document.body.appendChild(form); // Necessary.
+
+            form.submit();
+        }
+    </script>
+}
+
+
+<h1>@ViewBag.Title</h1>
+
+<table class="defaultTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <tr>
+                <td class="name">@Model[i].Name</td>
+                <td class="action">
+                    @Html.ActionLink("View", "Display", new { id = @Model[i].Id }, new { @class = "actionLink" }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = @Model[i].Id }, new { @class = "actionLink" }) |
+                    <a class="actionLink" href="javascript:void(0);" onclick="deleteById(@Model[i].Id)">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <input type="button" value="Edit Track Pool" onclick="window.location='@Url.Action("Index", "Track")'" />
+    <input type="button" value="Add Playlist" onclick="window.location='@Url.Action("Add")'" />
+</div>
+
+
+
+

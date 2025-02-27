@@ -1,0 +1,35 @@
+﻿
+.outer {
+    width: 400px;
+    border: 1px solid #0094ff;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.title {
+    display: table-cell;
+    width: 75%;
+}
+
+.length {
+    display: table-cell;
+    width: 25%;
+    padding-left: 10px;
+}
+
+.row {
+    padding: 5px 0px;
+}
+
+    .row.buttons {
+        width: fit-content;
+        margin: auto;
+        margin-top: 10px;
+    }
+
+button, input[type=button], input[type=submit] {
+    width: 100px;
+}

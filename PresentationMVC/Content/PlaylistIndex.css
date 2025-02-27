@@ -1,0 +1,9 @@
+﻿
+.defaultTable th {
+    background-color: #b200ff;
+}
+
+.defaultTable .action {
+    width: 1px;
+    white-space: nowrap;
+}
