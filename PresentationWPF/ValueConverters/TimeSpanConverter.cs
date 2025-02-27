@@ -19,6 +19,7 @@ namespace PresentationWPF.ValueConverters
         }
 
         // Never called as we don't use two-way binindg.
+        // Is this file locked?
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
            return value;
